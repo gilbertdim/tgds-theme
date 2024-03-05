@@ -1,0 +1,20 @@
+{
+  "name": "boxybird/wordpress-inertia-starter-theme",
+  "authors": [
+    {
+      "name": "Andrew Rhyand",
+      "email": "hello@andrewrhyand.com"
+    }
+  ],
+  "require": {
+    "boxybird/inertia-wordpress": "^0.5.6"
+  },
+  "autoload": {
+    "psr-4": {
+      "App\\": "app/"
+    }
+  },
+  "require-dev": {
+    "symfony/var-dumper": "^6.4"
+  }
+}
