@@ -2,9 +2,8 @@
 
 namespace TGDS;
 
-use App\Taxonomies\Services;
-use App\Taxonomies\Skills;
-use App\Taxonomies\SocialAccounts;
+use App\Enums\TaxonomyType;
+use App\Register\RegisterTaxonomy;
 use BoxyBird\Inertia\Inertia;
 
 require_once __DIR__ . '/vendor/autoload.php';
@@ -13,9 +12,9 @@ require_once __DIR__ . '/Installation.php';
 
 add_action('after_switch_theme', ['Installation', 'setup']);
 
-new Services();
-new Skills();
-new SocialAccounts();
+new RegisterTaxonomy(TaxonomyType::SERVICES, ['service_icon' => 'Icon'], 'dashicons-networking', 5);
+new RegisterTaxonomy(TaxonomyType::SKILLS, ['rating' => 'Rating', 'icon' => 'Icon'],'dashicons-universal-access', 6);
+new RegisterTaxonomy(TaxonomyType::SOCIAL_ACCOUNTS, ['username' => 'Username','icon' => 'Icon','link' => 'Link'], 'dashicons-share', 7);
 
 // Enqueue scripts.
 add_action('wp_enqueue_scripts', function () {

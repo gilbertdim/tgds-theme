@@ -7,7 +7,9 @@
     }
   ],
   "require": {
-    "boxybird/inertia-wordpress": "^0.5.6"
+    "boxybird/inertia-wordpress": "^0.5.6",
+    "illuminate/support": "^10.48",
+    "archtechx/enums": "^1.0"
   },
   "autoload": {
     "psr-4": {
