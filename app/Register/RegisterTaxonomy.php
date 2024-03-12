@@ -97,11 +97,9 @@ class RegisterTaxonomy
 
 	function save_fields( $term_id )
 	{
-		update_term_meta(
-			$term_id,
-			'icon',
-			sanitize_text_field( $_POST[ 'icon' ] )
-		);
+		foreach (array_keys($this->metaData) as $meta) {
+			update_term_meta( $term_id, $meta, sanitize_text_field( $_POST[ $meta ] ) );
+		}
 	}
 
 	public function table_columns($columns) {
