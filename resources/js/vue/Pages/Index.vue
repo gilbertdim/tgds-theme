@@ -53,7 +53,7 @@
 
 <script setup>
 
-import { Link, usePage } from '@inertiajs/inertia-vue3'
+import { usePage } from '@inertiajs/inertia-vue3'
 import Navigation from "../Components/Navigation.vue";
 import Service from "../Components/Service.vue";
 

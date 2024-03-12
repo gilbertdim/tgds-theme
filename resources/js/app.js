@@ -3,6 +3,9 @@ import { createInertiaApp } from '@inertiajs/inertia-vue3'
 import { InertiaProgress } from '@inertiajs/progress'
 import Layout from './vue/Shared/Layout.vue'
 
+window.axios = require('axios');
+window.axios.defaults.headers.common['X-WP-Nonce'] = '8e0eb63b8f';
+
 InertiaProgress.init()
 
 createInertiaApp({

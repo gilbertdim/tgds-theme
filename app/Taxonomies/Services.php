@@ -68,12 +68,12 @@ class Services
 
     public function add_icon_field()
     {
-        Inertia::render('Admin/Taxonomies/Add/IconInput');
+        Inertia::render('Admin/Taxonomies/AddForm');
     }
 
     public function edit_icon_field($term, $taxonomy)
     {
-        Inertia::render('Admin/Taxonomies/Edit/IconInput', [
+        Inertia::render('Admin/Taxonomies/EditForm', [
 			'icon' => get_term_meta($term->term_id, 'icon', true)
         ]);
     }

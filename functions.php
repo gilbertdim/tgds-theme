@@ -1,11 +1,21 @@
 <?php
 
-use BoxyBird\Inertia\Inertia;
+namespace TGDS;
+
 use App\Taxonomies\Services;
+use App\Taxonomies\Skills;
+use App\Taxonomies\SocialAccounts;
+use BoxyBird\Inertia\Inertia;
 
 require_once __DIR__ . '/vendor/autoload.php';
+require_once __DIR__ . '/helpher.php';
+require_once __DIR__ . '/Installation.php';
+
+add_action('after_switch_theme', ['Installation', 'setup']);
 
 new Services();
+new Skills();
+new SocialAccounts();
 
 // Enqueue scripts.
 add_action('wp_enqueue_scripts', function () {
@@ -25,7 +35,8 @@ add_action('after_setup_theme', function () {
         'site' => [
             'name'        => get_bloginfo('name'),
             'description' => get_bloginfo('description'),
-            'logo' => get_stylesheet_directory_uri() . '/dist/images/TheGDSoftwares-rectangle-no-bg.png'
+            'logo' => get_stylesheet_directory_uri() . '/assets/images/TheGDSoftwares-rectangle-no-bg.png',
+	        'theme_path' => get_stylesheet_directory_uri()
         ],
     ]);
 });

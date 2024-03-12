@@ -12,16 +12,16 @@ const props = defineProps({
 
 const classes = computed(() => {
   return props.active
-      ? 'flex hover:bg-blue-50 transition duration-500 py-2 px-3 rounded text-blue-700'
-      : 'flex hover:bg-blue-50 transition duration-500 py-2 px-3 rounded text-black ';
+      ? 'flex pointer-events-none transition duration-500 py-2 px-3 rounded text-blue-700'
+      : 'flex hover:bg-blue-50 hover:text-black transition duration-500 py-2 px-3 rounded';
 });
 
 </script>
 
 <template>
-  <Link :href="href" :class="classes">
+  <a :href="href" :class="classes">
     <slot />
-  </Link>
+  </a>
 </template>
 
 <style scoped>
