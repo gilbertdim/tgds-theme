@@ -18,7 +18,7 @@ const { props } = usePage();
           <p class="text-2xl text-center w-full mb-10">Connect with Us</p>
           <div class="ml-0 2xl:ml-36">
             <div v-for="social in props.socials">
-              <a :href="social.meta.link" class="flex gap-2">
+              <a :href="social.meta.link" class="flex gap-2 my-5">
                 <img class="w-7" :src="social.meta.icon" alt="">
                 <span class="text-lg"><span v-html="social.meta.username"></span>  </span>
               </a>
