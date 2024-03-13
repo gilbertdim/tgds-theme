@@ -90,9 +90,12 @@ class RegisterTaxonomy
 
     public function edit_icon_field($term, $taxonomy)
     {
-	    Inertia::render("Admin/$this->component/EditForm", [
-		    'icon' => get_term_meta($term->term_id, 'icon', true)
-	    ]);
+	    $data = [];
+	    foreach (array_keys($this->metaData) as $meta) {
+		    $data[$meta] = get_term_meta($term->term_id, $meta, true);
+	    }
+
+	    Inertia::render("Admin/$this->component/EditForm", $data);
     }
 
 	function save_fields( $term_id )
