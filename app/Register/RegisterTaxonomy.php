@@ -32,8 +32,8 @@ class RegisterTaxonomy
 
 	    add_action( 'admin_menu', [$this, 'menu']);
 
-	    add_action( "{$this->name}_add_form_fields", [$this, 'add_icon_field']);
-	    add_action( "{$this->name}_edit_form_fields", [$this, 'edit_icon_field'], 10, 2);
+	    add_action( "{$this->name}_add_form_fields", [$this, 'add_form']);
+	    add_action( "{$this->name}_edit_form_fields", [$this, 'edit_form'], 10, 2);
 
 	    add_action( "created_{$this->name}", [$this, 'save_fields'] );
 	    add_action( "edited_{$this->name}", [$this, 'save_fields'] );
@@ -83,12 +83,12 @@ class RegisterTaxonomy
 	    ));
     }
 
-    public function add_icon_field()
+    public function add_form()
     {
 	    Inertia::render("Admin/$this->component/AddForm");
     }
 
-    public function edit_icon_field($term, $taxonomy)
+    public function edit_form($term, $taxonomy)
     {
 	    $data = [];
 	    foreach (array_keys($this->metaData) as $meta) {

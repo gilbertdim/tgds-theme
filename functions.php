@@ -12,7 +12,7 @@ require_once __DIR__ . '/Installation.php';
 
 add_action('after_switch_theme', ['Installation', 'setup']);
 
-new RegisterTaxonomy(TaxonomyType::SERVICES, ['service_icon' => 'Icon'], 'dashicons-networking', 5);
+new RegisterTaxonomy(TaxonomyType::SERVICES, ['icon' => 'Icon'], 'dashicons-networking', 5);
 new RegisterTaxonomy(TaxonomyType::SKILLS, ['rating' => 'Rating', 'icon' => 'Icon'],'dashicons-universal-access', 6);
 new RegisterTaxonomy(TaxonomyType::SOCIAL_ACCOUNTS, ['username' => 'Username','icon' => 'Icon','link' => 'Link'], 'dashicons-share', 7);
 
