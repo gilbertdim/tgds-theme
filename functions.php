@@ -8,7 +8,7 @@ use BoxyBird\Inertia\Inertia;
 use Dotenv\Dotenv;
 
 require_once __DIR__ . '/vendor/autoload.php';
-require_once __DIR__ . '/helpher.php';
+require_once __DIR__ . '/helper.php';
 require_once __DIR__ . '/Installation.php';
 
 $dotenv = Dotenv::createImmutable(__DIR__);
