@@ -9,7 +9,7 @@
         <div class="w-full md:block md:w-auto" id="navbar-multi-level">
           <ul class="flex justify-center font-medium p-4 md:p-0 mt-4 rounded-lg md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0">
             <NavLink href="/" :active="activeRoute == ''">Home</NavLink>
-            <NavLink>Services</NavLink>
+            <NavLink href="/#services">Services</NavLink>
             <NavLink>Contact</NavLink>
             <NavLink href="/about" :active="activeRoute == 'about'">About</NavLink>
           </ul>

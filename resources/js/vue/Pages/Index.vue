@@ -17,7 +17,7 @@
     </div>
   </section>
 
-  <section class="bg-white py-10">
+  <section class="bg-white py-10" scroll-region id="services">
     <div class="container mx-auto p-2">
       <h1 class="text-4xl text-center my-10">
         Services

@@ -1,15 +1,3 @@
-<script setup>
-
-import FormLabel from "./FormLabel.vue";
-import FormInput from "./FormInput.vue";
-import FormText from "./FormText.vue";
-import FormButton from "./FormButton.vue";
-import {usePage} from "@inertiajs/inertia-vue3";
-
-const { props } = usePage();
-
-</script>
-
 <template>
   <section class="bg-gray-700 w-full py-14 text-white p-10">
     <div class="xl:container xl:mx-auto">
@@ -38,25 +26,30 @@ const { props } = usePage();
         </div>
         <div>
           <p class="text-2xl text-center w-full mb-10">Send us a message</p>
-          <form action="">
+          <form id="contact-us" action="" method="POST">
+            <input type="hidden" name="form" value="contact-us">
             <div class="flex-col mb-4">
               <FormLabel>Name</FormLabel>
-              <FormInput/>
+              <FormInput name="name" required/>
             </div>
             <div class="flex-col mb-4">
               <FormLabel>Email Address</FormLabel>
-              <FormInput/>
+              <FormInput name="email" required/>
             </div>
             <div class="flex-col mb-4">
               <FormLabel>Contact Number</FormLabel>
-              <FormInput/>
+              <FormInput name="contact_number"/>
             </div>
             <div class="flex-col mb-4">
               <FormLabel>Message</FormLabel>
-              <FormText rows="10"/>
+              <FormText name="message" rows="10" required/>
             </div>
             <div class="flex-col">
-              <FormButton>Send Message</FormButton>
+              <FormButton type="button"
+                          class="g-recaptcha"
+                          :data-sitekey="props.options.recaptcha.site_key"
+                          data-callback='contactFormSubmit'
+                          data-action='submit'>Send Message</FormButton>
             </div>
           </form>
         </div>
@@ -64,6 +57,38 @@ const { props } = usePage();
     </div>
   </section>
 </template>
+
+<script setup>
+
+import FormLabel from "./FormLabel.vue";
+import FormInput from "./FormInput.vue";
+import FormText from "./FormText.vue";
+import FormButton from "./FormButton.vue";
+import {usePage} from "@inertiajs/inertia-vue3";
+import {useToast} from "vue-toast-notification";
+import 'vue-toast-notification/dist/theme-sugar.css';
+
+const {props} = usePage();
+const $toast = useToast();
+
+window.contactFormSubmit = function formSubmit (key) {
+  const form = document.getElementById("contact-us");
+  const formData = Object.fromEntries(new FormData(form).entries());
+
+  axios.put('/', formData).then(function (response) {
+    $toast.success(response.data.data, {
+      'position': 'top-right',
+    });
+
+    form.reset();
+  }).catch(function (error) {
+    $toast.error(error.response.data.data, {
+      'position': 'top-right',
+    });
+  });
+}
+
+</script>
 
 <style scoped>
 
