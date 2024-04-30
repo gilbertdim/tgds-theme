@@ -55,7 +55,7 @@ class ContactUsController
 		$this->table = "{$wpdb->prefix}contact_us";
 
 		$sql = "
-			CREATE TABLE IF NOT EXISTS {$this->table} (
+			CREATE TABLE IF NOT EXISTS `table` (
 			    `id` INT UNSIGNED NOT NULL AUTO_INCREMENT,
                 `name` VARCHAR(200) NOT NULL,
                 `contact_number` VARCHAR(100) NOT NULL,
