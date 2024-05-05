@@ -80,6 +80,15 @@ class ContactUsController
 			$created = $wpdb->insert($this->table, $validated);
 
 			if ($created) {
+				$to = $_ENV['CONTACT_US_TO'];
+				$subject = 'TGDS Inquiry';
+				$headers = [
+					"From: {$validated['name']}<{$validated['email']}>",
+					"Reply-To: {$validated['name']}<{$validated['email']}>",
+				];
+
+				wp_mail($to, $subject, $validated['message'], $headers);
+
 				return wp_send_json_success('Thank you for reaching out to us. We appreciate your interest. <br>We will get back to you as soon as possible', 200);
 			}
 
