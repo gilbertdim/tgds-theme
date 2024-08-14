@@ -27,6 +27,13 @@ foreach ($controllers as $controller) {
 	new $class();
 }
 
+$adminPages = array_filter(scandir(__DIR__.'/app/Admin'), fn ($item) => !in_array($item, ['.', '..']));
+$adminPages = array_map(fn ($item) => str_replace('.php', '', $item), $adminPages);
+foreach ($adminPages as $page) {
+	$class = "App\\Admin\\$page";
+	new $class();
+}
+
 $recaptchSiteKey = $_ENV['RECAPTCHA_SITE_KEY'];
 
 // Enqueue scripts.
